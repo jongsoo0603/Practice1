@@ -1,0 +1,29 @@
+#include<iostream>
+
+using namespace std;
+
+int main()
+{
+    int n, i, j;
+    string star;
+    
+    cout << "input : ";
+    cin >> n;
+    cout << "output : \n";
+
+    for(i = 0; i < n; i++)
+    {
+        star += "*";
+        cout << star << endl;
+    }
+
+    for(i = 1; i <= n; i++)
+    {
+        for(j = 1; j <= i; j++)
+        {
+            cout << "*";
+        }
+        cout << endl;
+    }
+
+}
