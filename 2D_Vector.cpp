@@ -41,7 +41,7 @@ int main()
 	{
 		for (int j = 0; j < y; j++)
 		{
-			cout << setw(3) << arr[i][j];
+			cout << setw(3) << arr[i][j]; // setw(3) == 3칸 확보 후 출력(iomanip 헤더파일)
 		}
 		cout << endl;
 	}

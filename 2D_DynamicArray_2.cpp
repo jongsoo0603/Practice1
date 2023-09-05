@@ -4,16 +4,14 @@ using namespace std;
 
 int main()
 {
-	// ==============
-	// 2차원 배열 실습
-	int x, y, z = 1;
+	// =========
+	// 배열 복습
+	int x, y, a, sum = 0;
 
 	while (1)
 	{
-		cout << "x를 입력하세요:";
-		cin >> x; // 행
-		cout << "y를 입력하세요:";
-		cin >> y; // 열
+		cout << "행과 열의 수를 입력하세요:";
+		cin >> x >> y;
 		if (x > 0 && y > 0)
 		{
 			break;
@@ -28,23 +26,40 @@ int main()
 		arr[i] = new int[y];
 	}
 
+	cout << "행렬 원소를 입력하세요: \n";
+
 	for (int i = 0; i < x; i++) // 배열 입력
 	{
 		for (int j = 0; j < y; j++)
 		{
-			arr[i][j] = z;
-			z++;
+			cin >> a;
+			arr[i][j] = a;
 		}
 	}
 
-	for (int i = 0; i < x; i++) // 배열 출력
+	cout << "\n각 행의 합:\n";
+	for (int i = 0; i < x; i++) 
 	{
 		for (int j = 0; j < y; j++)
 		{
-			cout << arr[i][j] << "\t"; // cout << setw(3) << arr[i][j]
+			sum += arr[i][j];
 		}
-		cout << endl;
+		cout << "행 " << i + 1 << " : " << sum << endl;
+		sum = 0;
 	}
+
+	cout << "\n\n각 열의 합:\n";
+	for (int i = 0; i <y; i++) 
+	{
+		for (int j = 0; j < x; j++)
+		{
+			sum += arr[j][i];
+		}
+		cout << "열 " << i + 1 << " : " << sum << endl;
+		sum = 0;
+	}
+
+
 
 	for (int i = 0; i < x; i++) // 동적배열 해제(반납)
 	{

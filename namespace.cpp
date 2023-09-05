@@ -22,6 +22,9 @@ using namespace busan; // busan이라는 네임스페이스의 지역변수들을 전역변수로 전�
 
 int main()
 {
+	// =============
+	// namespace 실습
+
 	seoul::num = 1; // seoul이라는 네임스페이스의 지역변수
 	num = 2; // 전역변수로 변환된 busan의 지역변수
 
