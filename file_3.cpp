@@ -16,7 +16,7 @@ int main()
 	cin >> name;
 	cout << "비번을 입력하세요 : ";
 	cin >> pw;
-
+	
 	ifstream f_r("member.txt");
 
 	while (getline(f_r, line))
@@ -28,28 +28,28 @@ int main()
 			in = 1;
 		}
 	}
-
 	f_r.close();
 
-	string str;
 
 	if (in == 1)
 	{
-		cout << "로그인 성공\n전화번호를 입력하세요 : ";
+		cout << "\n로그인 성공\n전화번호를 입력하세요 : ";
 		cin >> pn;
 		tmp = name + " " + pn + "\n";
-		if (str.empty()) // 파일이 없다면
+
+		string str = {};
+		ifstream t_r("member_tel.txt");
+		if (t_r.fail()) // 파일이 없다면
 		{
-			str += tmp;
-			ofstream f_w("member_tel.txt");
-			f_w << str;
-			f_w.close();
+			ofstream t_w("member_tel.txt"); // tmp로 파일 생성
+			t_w << tmp;
+			t_w.close();
+			cout << "\n파일을 생성했습니다." << endl;
 		}
-		else // 파일이 만들어 졌다면
+
+		else // 파일이 만들어져 있다면
 		{
-			str = {};
-			ifstream t_r("member_tel.txt");
-			while (getline(t_r, line, ' '))
+			while (getline(t_r, line, ' ')) // str 문자열에 파일 전체 공백 기준으로 붙임
 			{
 				str += line + " ";
 			}
@@ -57,8 +57,6 @@ int main()
 			t_r.close();
 
 			idx = str.find(name);  // 이름의 인덱스
-
-			cout << "str " << str << " idx " << idx;
 
 			if (idx != -1) //이름이 있으면 replace
 			{
@@ -71,6 +69,7 @@ int main()
 					idx += tmp.size();
 				}
 				f_w.close();
+				cout << "\n번호를 수정했습니다." << endl;
 			}
 			else// 없으면 추가
 			{
@@ -83,10 +82,9 @@ int main()
 					idx += tmp.size();
 				}
 				f_w.close();
+				cout << "\n번호를 추가했습니다." << endl;
 			}
 		}
-		
-		
 	}
 	else
 	{
