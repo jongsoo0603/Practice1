@@ -1,4 +1,6 @@
 #include<iostream>
+#include<fstream>
+#include<string>
 
 using namespace std;
 
@@ -54,8 +56,8 @@ class Character
 
 int main()
 {
-    int num = -1, level1 = 0, level2 = 0, item1 = 0, item2 = 0, power1 = 1, power2 = 1, physical1 = 3, physical2 = 3, person = 0, p = 0;
-    string name;
+    int num = -1, level1 = 1, level2 = 1, item1 = 0, item2 = 0, power1 = 1, power2 = 1, physical1 = 3, physical2 = 3, person = 0, p = 0;
+    string name, str;
    
     cout << "첫 번째 챔피언 이름을 입력해 주세요 : ";
     cin >> name;
@@ -75,8 +77,7 @@ int main()
 
     while(num != 0)
     {
-        cout << "\n현재 상태\n==========\n이름 : " << c1.getname() << "\n레벨 : " << c1.getlevel() << "\n남은 체력 : " << c1.getphysical() << "\n공격력 : " << c1.getpower() << "\n남은 아이템 개수 : " << c1.getitem_num() << endl;
-        cout << "----------\n이름 : " << c2.getname() << "\n레벨 : " << c2.getlevel() << "\n남은 체력 : " << c2.getphysical() << "\n공격력 : " << c2.getpower() << "\n남은 아이템 개수 : " << c2.getitem_num() << endl << endl;
+        cout << "\n현재 상태\n==========\n이름 : " << c1.getname() << "\n레벨 : " << c1.getlevel() << "\n남은 체력 : " << c1.getphysical() << "\n공격력 : " << c1.getpower() << "\n남은 아이템 개수 : " << c1.getitem_num() << "\n----------\n이름 : " << c2.getname() << "\n레벨 : " << c2.getlevel() << "\n남은 체력 : " << c2.getphysical() << "\n공격력 : " << c2.getpower() << "\n남은 아이템 개수 : " << c2.getitem_num() << endl << endl;
         p = 0;
         while(p == 0)
         {
@@ -217,4 +218,8 @@ int main()
                 break;
         }
     }
+    str = "\n현재 상태\n==========\n이름 : " + c1.getname() + "\n레벨 : " + to_string(c1.getlevel()) + "\n남은 체력 : " + to_string(c1.getphysical()) + "\n공격력 : " + to_string(c1.getpower()) + "\n남은 아이템 개수 : " + to_string(c1.getitem_num()) + "\n----------\n이름 : " + c2.getname() + "\n레벨 : " + to_string(c2.getlevel()) + "\n남은 체력 : " + to_string(c2.getphysical()) + "\n공격력 : " + to_string(c2.getpower()) + "\n남은 아이템 개수 : " + to_string(c2.getitem_num()) + "\n\n";
+    ofstream f_w("game.txt");
+    f_w << str;
+    f_w.close();
 }
