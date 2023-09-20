@@ -8,6 +8,16 @@ protected:
     int power, NPA; // Number of possible attacks
 
 public:
+    virtual int get_power()
+    {
+        return 0;
+    }
+    virtual int get_NPA()
+    {
+        return 0;
+    }
+    virtual void set_NPA(int NPA) {}
+    virtual void increase_NPA() {}
     virtual void print_attack() {} // "~로 괴물을 ~했습니다."
 };
 
@@ -28,12 +38,14 @@ public:
         return NPA;
     }
 
-    void set_NPA(int NPA, int weaponPick)
+    void set_NPA(int NPA)
     {
-        if (weaponPick == 0) // sword
-        {
-            this->NPA = NPA;
-        }
+        this->NPA = NPA;
+    }
+
+    void increase_NPA()
+    {
+        this->NPA = NPA + 3;
     }
 
     void print_attack()
@@ -50,11 +62,6 @@ public:
         this->power = 10;
     }
 
-    void print_attack()
-    {
-        cout << "몬스터를 총으로 쐈습니다!" << endl;
-    }
-
     int get_power()
     {
         return power;
@@ -64,12 +71,18 @@ public:
         return NPA;
     }
 
-    void set_NPA(int NPA, int weaponPick)
+    void set_NPA(int NPA)
     {
-        if (weaponPick == 1) // sword
-        {
-            this->NPA = NPA;
-        }
+        this->NPA = NPA;
+    }
+    void increase_NPA()
+    {
+        this->NPA = NPA + 1;
+    }
+
+    void print_attack()
+    {
+        cout << "몬스터를 총으로 쐈습니다!" << endl;
     }
 };
 
@@ -79,9 +92,8 @@ private:
     int level = 1, hp = 50, monsterHP = 50;
 
 public:
-    Sword s;
     Gun g;
-
+    Sword s;
     int get_level()
     {
         return level;
@@ -100,31 +112,14 @@ public:
         this->monsterHP = monsterHP;
     }
 
-    float pick_up_weapon(int weaponPick)
+    void pick_up_weapon(Weapon *pick)
     {
-        if (weaponPick == 0) // sword
-        {
-            s.set_NPA(s.get_NPA() + 3, 0);
-            return s.get_NPA();
-        }
-        else // gun
-        {
-            g.set_NPA(g.get_NPA() + 1, 1);
-            return g.get_NPA();
-        }
+        pick->increase_NPA();
     }
-    void attack(int weaponPick)
+    void attack(Weapon *pick)
     {
-        if (weaponPick == 0)
-        {
-            monsterHP -= s.get_power();
-            s.set_NPA(s.get_NPA() - 1, weaponPick);
-        }
-        else
-        {
-            monsterHP -= g.get_power();
-            g.set_NPA(g.get_NPA() - 1, weaponPick);
-        }
+        monsterHP -= pick->get_power();
+        pick->set_NPA(pick->get_NPA() - 1);
     }
 };
 
@@ -136,13 +131,12 @@ int main()
     Gun g;
     Sword s;
 
-    Weapon w;
-    Weapon *sword = &s;
+    Weapon *sword = &s; //
     Weapon *gun = &g;
 
     while (end != 0)
     {
-        cout << "수행할 스킬을 입력하세요.\n(0.종료, 1.아이템 줍기, 2.공격, 3.나의 정보 보기) : ";
+        cout << "수행할 스킬을 입력하세요.(0.종료, 1.아이템 줍기, 2.공격, 3.나의 정보 보기) : ";
         cin >> select;
 
         switch (select)
@@ -156,9 +150,14 @@ int main()
 
             cout << "주을 무기를 선택하세요(칼 : 0, 총 : 1) : ";
             cin >> weaponPick;
-            NPA = c.pick_up_weapon(weaponPick);
-            g.set_NPA(NPA, weaponPick);
-            s.set_NPA(NPA, weaponPick);
+            if (weaponPick == 0)
+            {
+                c.pick_up_weapon(sword);
+            }
+            else
+            {
+                c.pick_up_weapon(gun);
+            }
             cout << "남은 공격 가능 횟수(칼 : " << s.get_NPA() << ", 총 : " << g.get_NPA() << ")\n\n";
             break;
 
@@ -176,12 +175,12 @@ int main()
                 cin >> weaponPick;
                 if (weaponPick == 0 && s.get_NPA() > 0)
                 {
-                    c.attack(weaponPick);
+                    c.attack(sword);
                     sword->print_attack();
                 }
                 else if (weaponPick == 1 && g.get_NPA() > 0)
                 {
-                    c.attack(weaponPick);
+                    c.attack(gun);
                     gun->print_attack();
                 }
                 else
