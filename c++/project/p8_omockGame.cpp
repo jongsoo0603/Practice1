@@ -1,16 +1,13 @@
 #include <iostream>
-#include <iomanip> // setw() ¸¦ »ç¿ëÇÏ±â À§ÇÑ Çì´õ
-#include <Windows.h> // system("cls")¸¦ »ç¿ëÇÏ±â À§ÇÑ Çì´õ
-#include <conio.h> // _getch()¸¦ »ç¿ëÇÏ±â À§ÇÑ Çì´õ 
+#include <iomanip>   // setw() ë¥¼ ì‚¬ìš©í•˜ê¸° ìœ„í•œ í—¤ë”
+#include <Windows.h> // system("cls")ë¥¼ ì‚¬ìš©í•˜ê¸° ìœ„í•œ í—¤ë”
+#include <conio.h>   // _getch()ë¥¼ ì‚¬ìš©í•˜ê¸° ìœ„í•œ í—¤ë”
 
-#define SPACE 32 // ½ºÆäÀÌ½º¹Ù¿Í ¿£ÅÍ¸¦ ÀÔ·Â¹Ş±â À§ÇØ ¼±¾ğ
-#define ENTER 13
-
-const int num = 15; // ¿À¸ñÆÇ °¡·Î, ¼¼·Î ±æÀÌ
+const int num = 15; // ì˜¤ëª©íŒ ê°€ë¡œ, ì„¸ë¡œ ê¸¸ì´
 
 using namespace std;
 
-void CursorView(bool show) // Ä¿¼­ ±ôºıÀÓ Á¦°Å
+void CursorView(bool show) // ì¶œë ¥ ì½˜ì†”ì˜ ì»¤ì„œ ê¹œë¹¡ì„ ì œê±°
 {
     HANDLE hConsole;
     CONSOLE_CURSOR_INFO ConsoleCursor;
@@ -20,96 +17,110 @@ void CursorView(bool show) // Ä¿¼­ ±ôºıÀÓ Á¦°Å
     SetConsoleCursorInfo(hConsole, &ConsoleCursor);
 };
 
-void print(string square[][num], string stone, int areaX, int areaY) // ½ºÆ®¸µÀÇ 2Áß Á¤Àû ¹è¿­Àº ¿­ÀÇ Å©±â°¡ ¼±¾ğµÇ¾î¾ß ÇÑ´Ù°í ÇÔ(Á¦Ä³ ¸®´õ´Ô ÇÇ¼È)
+void print(string square[][num], string stone, int areaX, int areaY) // ë°”ë‘‘íŒì„ ì¶œë ¥í•´ì£¼ëŠ” í•¨ìˆ˜
 {
-    system("cls"); // Ãâ·Â È­¸éÀ» Å¬¸®¾î ÇØÁÜ
+    system("cls"); // ì§€ê¸ˆê¹Œì§€ ì½˜ì†”ì—  ì¶œë ¥í•œ í™”ë©´ì„ í´ë¦¬ì–´ í•´ì¤Œ
     for (int i = 0; i < num; i++)
     {
         for (int j = 0; j < num; j++)
         {
-            if (i == areaX && j == areaY) { // areaX,Y = ÇöÀç À§Ä¡
-                cout << setw(5) << "¡Ù"; // "¡Ù" Ãâ·ÂÇÏ¿© ÇöÀç À§Ä¡. È®ÀÎ
+            if (i == areaX && j == areaY)
+            {                           // areaX,Y = í˜„ì¬ ìœ„ì¹˜
+                cout << setw(5) << "â˜†"; // "â˜†" ì¶œë ¥í•˜ì—¬ í˜„ì¬ ìœ„ì¹˜. í™•ì¸
             }
-            else {
+            else
+            {
                 cout << setw(5) << square[i][j];
             }
         }
         cout << endl;
     }
     cout << "*************************************************************" << endl;
-    cout << "                             " << stone << " Â÷·Ê" << endl;
+    cout << "                             " << stone << " ì°¨ë¡€" << endl;
     cout << "*************************************************************" << endl;
-    cout << "                           ÀÌµ¿¹æ¹ı" << endl;
-    cout << "           " << setw(5) << "Q¢Ø" << setw(6) << "¡èW" << setw(5) << "¢ÖE" << endl;
-    cout << "           " << setw(5) << "A¡ç" << setw(4) << "+" << setw(6) << "¡æD" << "     SPACE BAR : ¹ÙµÏµ¹ µÎ±â " << endl;
-    cout << "           " << setw(5) << "Z¢×" << setw(6) << "¡éS" << setw(5) << "¢ÙC" << endl;
+    cout << "                           ì´ë™ë°©ë²•" << endl;
+    cout << "           " << setw(5) << "Qâ†–" << setw(6) << "â†‘W" << setw(5) << "â†—E" << endl;
+    cout << "           " << setw(5) << "Aâ†" << setw(4) << "+" << setw(6) << "â†’D"
+         << "     SPACE BAR : ë°”ë‘‘ëŒ ë‘ê¸° " << endl;
+    cout << "           " << setw(5) << "Zâ†™" << setw(6) << "â†“S" << setw(5) << "â†˜C" << endl;
     cout << "*************************************************************" << endl;
-    cout << " ¡ºESC¸¦ ´©¸£¸é °ÔÀÓ Á¾·á¡»";
+    cout << " ã€ESCë¥¼ ëˆ„ë¥´ë©´ ê²Œì„ ì¢…ë£Œã€";
 };
-
 
 int main()
 {
-    char moove; 
-    string square[num][num], stone; 
-    int player = 1, p = 0, areaX = 7, areaY = 7, end = 0, turn = 0; // areaX,Y = 7 : ÇöÀç À§Ä¡ÀÇ ÀÎµ¦½º(°¡¿îµ¥¿¡¼­ ½ÃÀÛ)
-    
-    CursorView(false); // Ä¿¼­ ±ôºıÀÓ Á¦°Å
+    char moove;
+    string square[num][num], stone;
+    int player = 1, p = 0, areaX = 7, areaY = 7, end = 0, turn = 0; // areaX,Y = 7 : í˜„ì¬ ìœ„ì¹˜ì˜ ì¸ë±ìŠ¤(ê°€ìš´ë°ì—ì„œ ì‹œì‘)
 
-    while (1) { // °ÔÀÓ ¿ÀÇÁ´×
+    CursorView(false); // ì»¤ì„œ ê¹œë¹¡ì„ ì œê±°
+
+    while (1)
+    { // ê²Œì„ ì˜¤í”„ë‹
         system("cls");
-        cout << endl << endl << endl << endl << endl << endl << endl << endl << endl << endl << endl << endl;
+        cout << endl
+             << endl
+             << endl
+             << endl
+             << endl
+             << endl
+             << endl
+             << endl
+             << endl
+             << endl
+             << endl
+             << endl;
         cout << "*************************************************************" << endl;
-        cout << "                          ¿À¸ñ" << endl;
+        cout << "                          ì˜¤ëª©" << endl;
         cout << "*************************************************************" << endl;
-        cout << "               ¡æ EnterÅ°¸¦ ÀÔ·ÂÇØ¼­ ½ÃÀÛ" << endl;
+        cout << "               â†’ Enterí‚¤ë¥¼ ì…ë ¥í•´ì„œ ì‹œì‘" << endl;
         cout << "*************************************************************" << endl;
-        moove = _getch(); // ÀÔ·Â°ªÀ» ¹öÆÛ¿¡ ÀúÀåµÇÁö ¾Ê°í ÀÔ·ÂµÈ °ªÀ» ¹Ù·Î¹Ù·Î ¹İÈ¯ÇØÁÖ´Â ÇÔ¼ö
-        if (moove == ENTER) {
+        moove = _getch(); // ì…ë ¥ê°’ì„ ë²„í¼ì— ì €ì¥í•˜ì§€ ì•Šê³  ì…ë ¥ëœ ê°’ì„ ë°”ë¡œë°”ë¡œ ë°˜í™˜í•´ì£¼ëŠ” í•¨ìˆ˜
+        if (moove == 13)
+        { // ì—”í„° ì…ë ¥ìœ¼ë¡œ ê²Œì„ ì‹œì‘
             break;
         }
     }
 
+    ////////// ì˜¤ëª©íŒ ì´ë™, ë°”ë‘‘ëŒì„ ë‘ëŠ” ê¸°ëŠ¥ //////////
 
-    ////////// ¿À¸ñÆÇ ÀÌµ¿, ¹ÙµÏµ¹À» µÎ´Â ±â´É //////////
-
-
-    for (int i = 0; i < num; i++) // ¹ÙµÏÆÇ(2Â÷¿ø Á¤Àû ¹è¿­)¿¡ ¸ğµÎ "¦«"¸¦ ÀÔ·ÂÇÏ¿© ÃÊ±âÈ­
+    for (int i = 0; i < num; i++) // ë°”ë‘‘íŒ(2ì°¨ì› ì •ì  ë°°ì—´)ì— ëª¨ë‘ "â”¼"ë¥¼ ì…ë ¥í•˜ì—¬ ì´ˆê¸°í™”
     {
         for (int j = 0; j < num; j++)
         {
-            square[i][j] = "¦«";
+            square[i][j] = "â”¼";
         }
     }
 
-    square[areaX][areaY] = "¡Û"; // Èæµ¹ÀÌ °¡¿îµ¥¿¡¼­ ½ÃÀÛ(7,7)
-    
-    while (end == 0) // °ÔÀÓÀÌ ³¡³ª±â Àü±îÁö ¹İº¹µÇ´Â Å« ¹İº¹¹®
+    square[areaX][areaY] = "â—‹"; // í‘ëŒì´ ê°€ìš´ë°ì—ì„œ ì‹œì‘(7,7)
+
+    while (end == 0) // ê²Œì„ì´ ëë‚˜ê¸° ì „ê¹Œì§€ ë°˜ë³µë˜ëŠ” í° ë°˜ë³µë¬¸
     {
-        // ÅÏ¿¡ µû¶ó ÇÃ·¹ÀÌ¾î º¯¼ö p¿Í µ¹ º¯¼ö stone ÀÔ·Â
-        player++; //ÅÏÀÌ ³¡³¯ ¶§ ¸¶´Ù +1
-        if (player % 2 == 0) // ³ª¸ÓÁö = 0 -> Èæµ¹
+        // í„´ì— ë”°ë¼ í”Œë ˆì´ì–´ ë³€ìˆ˜ pì™€ ëŒ ë³€ìˆ˜ stone ì…ë ¥
+        player++;            // í„´ì´ ëë‚  ë•Œ ë§ˆë‹¤ +1
+        if (player % 2 == 0) // ë‚˜ë¨¸ì§€ = 0 -> í‘ëŒ
         {
             p = 1;
-            stone = "¡Ü";
+            stone = "â—";
         }
-        else // ³ª¸ÓÁö = 1 -> ¹éµ¹
+        else // ë‚˜ë¨¸ì§€ = 1 -> ë°±ëŒ
         {
             p = 2;
-            stone = "¡Û";
+            stone = "â—‹";
         }
 
         print(square, stone, areaX, areaY);
 
-        while (turn == 0) // ÇÑ ÅÏÀ» ±âÁØÀ¸·Î ¹İº¹ÇÏ´Â ÀÛÀº ¹İº¹¹®
+        while (turn == 0) // í•œ í„´ì„ ê¸°ì¤€ìœ¼ë¡œ ë°˜ë³µí•˜ëŠ” ì‘ì€ ë°˜ë³µë¬¸
         {
             moove = _getch();
-            if ((moove == 87) || (moove == 119)) // ºÏ w
+            if ((moove == 87) || (moove == 119)) // ë¶ w
             {
-                if (areaX - 1 < 0) // ÀÌµ¿ µÉ À§Ä¡°¡ ¹ÙµÏÆÇ ¹ÛÀ¸·Î ³ª°£´Ù¸é
+                if (areaX - 1 < 0) // ì´ë™ ë  ìœ„ì¹˜ê°€ ë°”ë‘‘íŒ ë°–ìœ¼ë¡œ ë‚˜ê°„ë‹¤ë©´
                 {
                     print(square, stone, areaX, areaY);
-                    cout << setw(5) << " ¡Ø°æ°í : ¹ÛÀ¸·Î ³ª°¥ ¼ö ¾ø½À´Ï´Ù!" << endl << endl;
+                    cout << setw(5) << " â€»ê²½ê³  : ë°–ìœ¼ë¡œ ë‚˜ê°ˆ ìˆ˜ ì—†ìŠµë‹ˆë‹¤!" << endl
+                         << endl;
                 }
                 else
                 {
@@ -117,12 +128,13 @@ int main()
                     print(square, stone, areaX, areaY);
                 }
             }
-            else if ((moove == 65) || (moove == 97)) // ¼­ a
+            else if ((moove == 65) || (moove == 97)) // ì„œ a
             {
                 if (areaY - 1 < 0)
                 {
                     print(square, stone, areaX, areaY);
-                    cout << setw(5) << " ¡Ø°æ°í : ¹ÛÀ¸·Î ³ª°¥ ¼ö ¾ø½À´Ï´Ù!" << endl << endl;
+                    cout << setw(5) << " â€»ê²½ê³  : ë°–ìœ¼ë¡œ ë‚˜ê°ˆ ìˆ˜ ì—†ìŠµë‹ˆë‹¤!" << endl
+                         << endl;
                 }
                 else
                 {
@@ -130,12 +142,13 @@ int main()
                     print(square, stone, areaX, areaY);
                 }
             }
-            else if ((moove == 83) || (moove == 115)) // ³² s
+            else if ((moove == 83) || (moove == 115)) // ë‚¨ s
             {
                 if (areaX + 1 > 14)
                 {
                     print(square, stone, areaX, areaY);
-                    cout << setw(5) << " ¡Ø°æ°í : ¹ÛÀ¸·Î ³ª°¥ ¼ö ¾ø½À´Ï´Ù!" << endl << endl;
+                    cout << setw(5) << " â€»ê²½ê³  : ë°–ìœ¼ë¡œ ë‚˜ê°ˆ ìˆ˜ ì—†ìŠµë‹ˆë‹¤!" << endl
+                         << endl;
                 }
                 else
                 {
@@ -143,12 +156,13 @@ int main()
                     print(square, stone, areaX, areaY);
                 }
             }
-            else if ((moove == 68) || (moove == 100)) // µ¿ d
+            else if ((moove == 68) || (moove == 100)) // ë™ d
             {
                 if (areaY + 1 > 14)
                 {
                     print(square, stone, areaX, areaY);
-                    cout << setw(5) << " ¡Ø°æ°í : ¹ÛÀ¸·Î ³ª°¥ ¼ö ¾ø½À´Ï´Ù!" << endl << endl;
+                    cout << setw(5) << " â€»ê²½ê³  : ë°–ìœ¼ë¡œ ë‚˜ê°ˆ ìˆ˜ ì—†ìŠµë‹ˆë‹¤!" << endl
+                         << endl;
                 }
                 else
                 {
@@ -156,12 +170,13 @@ int main()
                     print(square, stone, areaX, areaY);
                 }
             }
-            else if ((moove == 69) || (moove == 101)) // ºÏµ¿ e
+            else if ((moove == 69) || (moove == 101)) // ë¶ë™ e
             {
                 if (areaX - 1 < 0 || areaY + 1 > 14)
                 {
                     print(square, stone, areaX, areaY);
-                    cout << setw(5) << " ¡Ø°æ°í : ¹ÛÀ¸·Î ³ª°¥ ¼ö ¾ø½À´Ï´Ù!" << endl << endl;
+                    cout << setw(5) << " â€»ê²½ê³  : ë°–ìœ¼ë¡œ ë‚˜ê°ˆ ìˆ˜ ì—†ìŠµë‹ˆë‹¤!" << endl
+                         << endl;
                 }
                 else
                 {
@@ -169,12 +184,13 @@ int main()
                     print(square, stone, areaX, areaY);
                 }
             }
-            else if ((moove == 81) || (moove == 113)) // ºÏ¼­ q
+            else if ((moove == 81) || (moove == 113)) // ë¶ì„œ q
             {
                 if (areaX - 1 < 0 || areaY - 1 < 0)
                 {
                     print(square, stone, areaX, areaY);
-                    cout << setw(5) << " ¡Ø°æ°í : ¹ÛÀ¸·Î ³ª°¥ ¼ö ¾ø½À´Ï´Ù!" << endl << endl;
+                    cout << setw(5) << " â€»ê²½ê³  : ë°–ìœ¼ë¡œ ë‚˜ê°ˆ ìˆ˜ ì—†ìŠµë‹ˆë‹¤!" << endl
+                         << endl;
                 }
                 else
                 {
@@ -182,12 +198,13 @@ int main()
                     print(square, stone, areaX, areaY);
                 }
             }
-            else if ((moove == 67) || (moove == 99)) // ³²µ¿ c
+            else if ((moove == 67) || (moove == 99)) // ë‚¨ë™ c
             {
                 if (areaX + 1 > 14 || areaY + 1 > 14)
                 {
                     print(square, stone, areaX, areaY);
-                    cout << setw(5) << " ¡Ø°æ°í : ¹ÛÀ¸·Î ³ª°¥ ¼ö ¾ø½À´Ï´Ù!" << endl << endl;
+                    cout << setw(5) << " â€»ê²½ê³  : ë°–ìœ¼ë¡œ ë‚˜ê°ˆ ìˆ˜ ì—†ìŠµë‹ˆë‹¤!" << endl
+                         << endl;
                 }
                 else
                 {
@@ -195,12 +212,13 @@ int main()
                     print(square, stone, areaX, areaY);
                 }
             }
-            else if ((moove == 90) || (moove == 122)) // ³²¼­ z
+            else if ((moove == 90) || (moove == 122)) // ë‚¨ì„œ z
             {
                 if (areaX + 1 > 14 || areaY - 1 < 0)
                 {
                     print(square, stone, areaX, areaY);
-                    cout << setw(5) << " ¡Ø°æ°í : ¹ÛÀ¸·Î ³ª°¥ ¼ö ¾ø½À´Ï´Ù!" << endl << endl;
+                    cout << setw(5) << " â€»ê²½ê³  : ë°–ìœ¼ë¡œ ë‚˜ê°ˆ ìˆ˜ ì—†ìŠµë‹ˆë‹¤!" << endl
+                         << endl;
                 }
                 else
                 {
@@ -208,19 +226,19 @@ int main()
                     print(square, stone, areaX, areaY);
                 }
             }
-            else if (moove == SPACE) // ¹ÙµÏµ¹ ³õ±â
+            else if (moove == 32) // ìŠ¤í˜ì´ìŠ¤ë°”ë¡œ ë°”ë‘‘ëŒ ë†“ê¸°
             {
-                if (square[areaX][areaY] == "¦«") // ÇöÀç À§Ä¡¿¡ ¹ÙµÏµ¹ÀÌ ¾ø´Ù¸é
+                if (square[areaX][areaY] == "â”¼") // í˜„ì¬ ìœ„ì¹˜ì— ë°”ë‘‘ëŒì´ ì—†ë‹¤ë©´
                 {
                     if (p == 1)
                     {
-                        square[areaX][areaY] = "¡Ü"; // ÇöÀç À§Ä¡¿¡ ¹ÙµÏµ¹À» ³õ°í
-                        turn = 1; // ÀÛÀº ¹İº¹¹® Å»Ãâ·Î ÅÏÀ» ³Ñ±è
+                        square[areaX][areaY] = "â—"; // í˜„ì¬ ìœ„ì¹˜ì— ë°”ë‘‘ëŒì„ ë†“ê³ 
+                        turn = 1;                   // ì‘ì€ ë°˜ë³µë¬¸ íƒˆì¶œë¡œ í„´ì„ ë„˜ê¹€
                         print(square, stone, areaX, areaY);
                     }
                     else
                     {
-                        square[areaX][areaY] = "¡Û";
+                        square[areaX][areaY] = "â—‹";
                         turn = 1;
                         print(square, stone, areaX, areaY);
                     }
@@ -228,48 +246,50 @@ int main()
                 else
                 {
                     print(square, stone, areaX, areaY);
-                    cout << setw(5) << " ¡Ø°æ°í : ¹ÙµÏµ¹ÀÌ ÀÖ½À´Ï´Ù!" << endl << endl;
+                    cout << setw(5) << " â€»ê²½ê³  : ë°”ë‘‘ëŒì´ ìˆìŠµë‹ˆë‹¤!" << endl
+                         << endl;
                 }
-                }
+            }
             else if (moove == 27) // esc
             {
-                cout << endl << endl << "¡¶ °ÔÀÓÀ» Á¾·áÇÕ´Ï´Ù... ¡·" << endl;
+                cout << endl
+                     << endl
+                     << "ã€Š ê²Œì„ì„ ì¢…ë£Œí•©ë‹ˆë‹¤... ã€‹" << endl;
                 turn = 1;
                 end = 1;
-                }
-            else // Áö±İ±îÁö ÀÔ·Â¹ŞÀº °Í°ú ´Ù¸¥ ¾Æ½ºÅ° ÄÚµå¸¦ ÀÔ·Â¹Ş¾Ò´Ù¸é
+            }
+            else // ì§€ê¸ˆê¹Œì§€ ì…ë ¥ë°›ì€ ê²ƒê³¼ ë‹¤ë¥¸ ì•„ìŠ¤í‚¤ ì½”ë“œë¥¼ ì…ë ¥ë°›ì•˜ë‹¤ë©´
             {
                 print(square, stone, areaX, areaY);
-                cout << setw(5) << " ¡Ø°æ°í : Àß¸ø ÀÔ·ÂÇÏ¼Ì½À´Ï´Ù." << endl << endl;
+                cout << setw(5) << " â€»ê²½ê³  : ì˜ëª» ì…ë ¥í•˜ì…¨ìŠµë‹ˆë‹¤." << endl
+                     << endl;
             }
         }
 
+        ////////// 5ëª© ê²€ì‚¬ ê¸°ëŠ¥ //////////
 
-        ////////// 5¸ñ °Ë»ç ±â´É //////////
-
-
-        int flagCase = 0; // ½ºÀ§Ä¡¹® ÀÎÀÚ·Î »ç¿ëÇÏ±â À§ÇÑ º¯¼ö
-        int countWin = 0; // ÇöÀç ³õÀº µ¹°ú ¿¬¼ÓµÈ °°Àº µ¹ Ä«¿îÆ®
-        while (flagCase < 4) // flagCase => 0:¼¼·Î, 1:°¡·Î, 2:¢Ø´ë°¢¼±, 3:¢Ö´ë°¢¼±, 4:°Ë»ç Á¾·á
+        int flagCase = 0;    // ìŠ¤ìœ„ì¹˜ë¬¸ ì¸ìë¡œ ì‚¬ìš©í•˜ê¸° ìœ„í•œ ë³€ìˆ˜
+        int countWin = 0;    // í˜„ì¬ ë†“ì€ ëŒê³¼ ì—°ì†ëœ ê°™ì€ ëŒ ì¹´ìš´íŠ¸
+        while (flagCase < 4) // flagCase => 0:ì„¸ë¡œ, 1:ê°€ë¡œ, 2:â†–ëŒ€ê°ì„ , 3:â†—ëŒ€ê°ì„ , 4:ê²€ì‚¬ ì¢…ë£Œ
         {
             switch (flagCase)
             {
 
-            case 0: // ¢Õ °Ë»ç
+            case 0: // xì¶• ê²€ì‚¬
                 for (int k = 1; k < 5; k++)
                 {
-                    if (square[areaX + k][areaY] == stone) // xÃà ++ => ¡é °Ë»ç (ÀÌµ¿ÇÑ ÀÎµ¦½º¿¡ ÇöÀç ³õÀºµ¹°ú °°Àº µ¹ÀÌ ³õ¿© ÀÖ¾ú´Ù¸é)
+                    if (square[areaX + k][areaY] == stone) // xì¶• ++ => â†“ ê²€ì‚¬ (ì´ë™í•œ ì¸ë±ìŠ¤ì— í˜„ì¬ ë†“ì€ëŒê³¼ ê°™ì€ ëŒì´ ë†“ì—¬ ìˆì—ˆë‹¤ë©´)
                     {
                         countWin++;
                     }
-                    else if (square[areaX + k][areaY] != stone || (areaX + k) > num - 1) // µ¹ÀÌ ´Ù¸£°Å³ª, ¾ø°Å³ª, ¹ÙµÏÆÇÀ» ¹ş¾î³­´Ù¸é
+                    else if (square[areaX + k][areaY] != stone || (areaX + k) > num - 1) // ëŒì´ ë‹¤ë¥´ê±°ë‚˜, ì—†ê±°ë‚˜, ë°”ë‘‘íŒì„ ë²—ì–´ë‚œë‹¤ë©´
                     {
-                        break; // for¹® Å»Ãâ => ´ÙÀ½ ÀÎµ¦½º·Î ÀÌµ¿ ¾ÈÇÏ°í Á¾·á
+                        break; // forë¬¸ íƒˆì¶œ => ë‹¤ìŒ ì¸ë±ìŠ¤ë¡œ ì´ë™ ì•ˆí•˜ê³  ì¢…ë£Œ
                     }
                 }
                 for (int k = 1; k < 5; k++)
                 {
-                    if (square[areaX - k][areaY] == stone) // ¡è °Ë»ç
+                    if (square[areaX - k][areaY] == stone) // â†‘ ê²€ì‚¬
                     {
                         countWin++;
                     }
@@ -278,17 +298,17 @@ int main()
                         break;
                     }
                 }
-                if (countWin == 4) // 5¸ñÀÌ¶ó¸é (6¸ñ Á¦¿Ü)
+                if (countWin == 4) // 5ëª©ì´ë¼ë©´ (6ëª© ì œì™¸)
                 {
-                    flagCase = 4; // case 4 -> default -> ½ºÀ§Ä¡ ¹® Å»Ãâ
+                    flagCase = 4; // case 4 -> default -> ìŠ¤ìœ„ì¹˜ ë¬¸ íƒˆì¶œ
                 }
-                flagCase++; // 0 -> 1 ÄÉÀÌ½º·Î ³Ñ¾î°¡¼­ °Ë»ç
+                flagCase++; // 0 -> 1 ì¼€ì´ìŠ¤ë¡œ ë„˜ì–´ê°€ì„œ ê²€ì‚¬
                 break;
 
-            case 1: // ¡ê °Ë»ç
+            case 1: // yì¶• ê²€ì‚¬
                 for (int k = 1; k < 5; k++)
                 {
-                    if (square[areaX][areaY + k] == stone) // ¡æ °Ë»ç
+                    if (square[areaX][areaY + k] == stone) // â†’ ê²€ì‚¬
                     {
                         countWin++;
                     }
@@ -297,7 +317,7 @@ int main()
                         break;
                     }
                 }
-                for (int k = 1; k < 5; k++) // ¡ç °Ë»ç
+                for (int k = 1; k < 5; k++) // â† ê²€ì‚¬
                 {
                     if (square[areaX][areaY - k] == stone)
                     {
@@ -317,10 +337,10 @@ int main()
                 flagCase++;
                 break;
 
-            case 2: // ´ë°¢¼± °Ë»ç
+            case 2: // â†–â†˜ëŒ€ê°ì„  ê²€ì‚¬
                 for (int k = 1; k < 5; k++)
                 {
-                    if (square[areaX - k][areaY - k] == stone) // ¢Ø °Ë»ç
+                    if (square[areaX - k][areaY - k] == stone) // â†– ê²€ì‚¬
                     {
                         countWin++;
                     }
@@ -331,7 +351,7 @@ int main()
                 }
                 for (int k = 1; k < 5; k++)
                 {
-                    if (square[areaX + k][areaY + k] == stone) // ¢Ù °Ë»ç
+                    if (square[areaX + k][areaY + k] == stone) // â†˜ ê²€ì‚¬
                     {
                         countWin++;
                     }
@@ -350,10 +370,10 @@ int main()
                 flagCase++;
                 break;
 
-            case 3: // ¹İ´ë ´ë°¢¼± °Ë»ç
+            case 3: // ë°˜ëŒ€ ëŒ€ê°ì„  ê²€ì‚¬
                 for (int k = 1; k < 5; k++)
                 {
-                    if (square[areaX - k][areaY + k] == stone) // ¢Ö °Ë»ç
+                    if (square[areaX - k][areaY + k] == stone) // â†— ê²€ì‚¬
                     {
                         countWin++;
                     }
@@ -364,7 +384,7 @@ int main()
                 }
                 for (int k = 1; k < 5; k++)
                 {
-                    if (square[areaX + k][areaY - k] == stone) // ¢× °Ë»ç
+                    if (square[areaX + k][areaY - k] == stone) // â†™ ê²€ì‚¬
                     {
                         countWin++;
                     }
@@ -374,7 +394,7 @@ int main()
                     }
                 }
 
-                if (countWin == 4) 
+                if (countWin == 4)
                 {
                     flagCase = 4;
                     break;
@@ -387,18 +407,22 @@ int main()
             }
         }
 
-        if (countWin == 4) // ½Â¸® Á¶°Ç ¸¸Á· == °ÔÀÓ Á¾·á
+        if (countWin == 4) // ìŠ¹ë¦¬ ì¡°ê±´ ë§Œì¡± == ê²Œì„ ì¢…ë£Œ
         {
-            if (stone == "¡Ü") { // ¸¶Áö¸·¿¡ µĞ µ¹ÀÌ ¹éµ¹ÀÌ¶ó¸é
-                cout << endl << "¡º ¡Ü (¹é) ÀÇ ½Â¸®! ¡»" << endl;
+            if (stone == "â—")
+            { // ë§ˆì§€ë§‰ì— ë‘” ëŒì´ ë°±ëŒì´ë¼ë©´
+                cout << endl
+                     << "ã€ â— (ë°±) ì˜ ìŠ¹ë¦¬! ã€" << endl;
             }
-            else {
-                cout << endl << " ¡º ¡Û (Èæ) ÀÇ ½Â¸®! ¡» " << endl;
+            else
+            {
+                cout << endl
+                     << " ã€ â—‹ (í‘) ì˜ ìŠ¹ë¦¬! ã€ " << endl;
             }
-            cout << "¡¶ °ÔÀÓÀ» Á¾·áÇÕ´Ï´Ù... ¡·" << endl;
-            end = 1; // °ÔÀÓ Á¾·á¸¦ °áÁ¤Áş´Â Å« while¹®ÀÇ false Á¶°Ç
+            cout << "ã€Š ê²Œì„ì„ ì¢…ë£Œí•©ë‹ˆë‹¤... ã€‹" << endl;
+            end = 1; // ê²Œì„ ì¢…ë£Œë¥¼ ê²°ì •ì§“ëŠ” í° whileë¬¸ì˜ false ì¡°ê±´
         }
 
-        turn = 0; // ÇÑ ÅÏÀ» °áÁ¤Áş´Â ÀÛÀº while¹®ÀÇ true Á¶°Ç = ÃÊ±âÈ­
+        turn = 0; // í•œ í„´ì„ ê²°ì •ì§“ëŠ” ì‘ì€ whileë¬¸ì˜ true ì¡°ê±´ = ì´ˆê¸°í™”
     }
 }
