@@ -178,7 +178,7 @@ WHERE department_id = 5;
 
 -- 2. 각 부서의 총 직원 수를 반환하는 쿼리를 작성합니다.
 -- (department_id, num_employees)
-SELECT department_id, count(department_id) as num_employees
+SELECT department_id, COUNT(department_id) as num_employees
 FROM employees
 GROUP BY department_id;
 
@@ -235,7 +235,9 @@ WHERE em1.job_id = em2.job_id;
 -- (first_name, last_name, hire_date)
 SELECT first_name, last_name, hire_date
 FROM employees
-WHERE hire_date LIKE ('2021%');
+-- WHERE hire_date LIKE ('2021%');
+-- WHERE YEAR(hire_date) LIKE 2021;
+WHERE YEAR(hire_date) = 2021;
 
 -- 11. 수수료를 받는 모든 직원의 이름과 급여를 반환하는 쿼리를 작성합니다.
 -- (first_name, last_name, salary, commission_pct)

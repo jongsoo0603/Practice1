@@ -1,6 +1,8 @@
+CREATE DATABASE  IF NOT EXISTS `codingon` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
+USE `codingon`;
 -- MySQL dump 10.13  Distrib 8.0.34, for macos13 (arm64)
 --
--- Host: localhost    Database: final
+-- Host: localhost    Database: codingon
 -- ------------------------------------------------------
 -- Server version	8.1.0
 
@@ -16,95 +18,135 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `departments`
+-- Table structure for table `authors`
 --
 
-DROP TABLE IF EXISTS `departments`;
+DROP TABLE IF EXISTS `authors`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `departments` (
-  `department_id` int NOT NULL AUTO_INCREMENT,
-  `department_name` varchar(20) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `manager_id` int DEFAULT NULL,
-  `location_id` varchar(20) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  PRIMARY KEY (`department_id`),
-  UNIQUE KEY `manager_id` (`manager_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+CREATE TABLE `authors` (
+  `author_id` int NOT NULL AUTO_INCREMENT,
+  `first_name` varchar(50) NOT NULL,
+  `last_name` varchar(50) NOT NULL,
+  `email` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`author_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `departments`
+-- Dumping data for table `authors`
 --
 
-LOCK TABLES `departments` WRITE;
-/*!40000 ALTER TABLE `departments` DISABLE KEYS */;
-INSERT INTO `departments` VALUES (1,'Engineering',3,'New York'),(2,'Sales',5,'Los Angeles'),(3,'Marketing',7,'Chicago'),(4,'Accounting',8,'Houston'),(5,'IT',10,'San Francisco');
-/*!40000 ALTER TABLE `departments` ENABLE KEYS */;
+LOCK TABLES `authors` WRITE;
+/*!40000 ALTER TABLE `authors` DISABLE KEYS */;
+INSERT INTO `authors` VALUES (1,'J.K.','Rowling','jkrowling@gmail.com'),(2,'George R.R.','Martin','grmartin@yahoo.com'),(3,'Stephen','King','sking@hotmail.com'),(5,'아가사','크리스티','agatha.christie@example.com');
+/*!40000 ALTER TABLE `authors` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Table structure for table `employees`
+-- Table structure for table `books`
 --
 
-DROP TABLE IF EXISTS `employees`;
+DROP TABLE IF EXISTS `books`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `employees` (
-  `employee_id` int NOT NULL AUTO_INCREMENT,
-  `first_name` varchar(20) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `last_name` varchar(20) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `email` varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `phone_number` varchar(20) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `hire_date` date DEFAULT NULL,
-  `job_id` int DEFAULT NULL,
-  `salary` decimal(9,2) DEFAULT NULL,
-  `commission_pct` decimal(3,2) DEFAULT NULL,
-  `manager_id` int DEFAULT NULL,
-  `department_id` int DEFAULT NULL,
-  PRIMARY KEY (`employee_id`),
-  KEY `job_id` (`job_id`),
-  KEY `manager_id` (`manager_id`),
-  KEY `department_id` (`department_id`),
-  CONSTRAINT `employees_ibfk_1` FOREIGN KEY (`job_id`) REFERENCES `jobs` (`job_id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `employees_ibfk_2` FOREIGN KEY (`manager_id`) REFERENCES `departments` (`manager_id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `employees_ibfk_3` FOREIGN KEY (`department_id`) REFERENCES `departments` (`department_id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+CREATE TABLE `books` (
+  `book_id` int NOT NULL AUTO_INCREMENT,
+  `author_id` int NOT NULL,
+  `title` varchar(100) NOT NULL,
+  `publication_date` date NOT NULL,
+  PRIMARY KEY (`book_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `employees`
+-- Dumping data for table `books`
 --
 
-LOCK TABLES `employees` WRITE;
-/*!40000 ALTER TABLE `employees` DISABLE KEYS */;
-INSERT INTO `employees` VALUES (1,'John','Doe','johndoe@example.com','555-1234','2021-01-01',1,100000.00,0.05,3,1),(2,'Jane','Smith','janesmith@example.com','555-5678','2021-02-01',2,80000.00,NULL,3,1),(3,'Bob','Johnson','bobjohnson@example.com','555-9012','2021-03-01',1,90000.00,0.02,5,2),(4,'Alice','Williams','alicewilliams@example.com','555-3456','2021-04-01',3,70000.00,NULL,5,2),(5,'Mike','Brown','mikebrown@example.com','555-7890','2021-05-01',4,120000.00,0.08,NULL,3),(6,'Sara','Lee','saralee@example.com','555-2345','2021-06-01',4,75000.00,NULL,7,4),(7,'Tom','Jackson','tomjackson@example.com','555-6789','2021-07-01',5,110000.00,0.03,NULL,4),(8,'Karen','Davis','karendavis@example.com','555-1234','2021-08-01',5,95000.00,NULL,7,4),(9,'David','Miller','davidmiller@example.com','555-5678','2021-09-01',2,85000.00,NULL,10,5),(10,'Lisa','Wilson','lisawilson@example.com','555-9012','2021-10-01',1,110000.00,0.06,NULL,5);
-/*!40000 ALTER TABLE `employees` ENABLE KEYS */;
+LOCK TABLES `books` WRITE;
+/*!40000 ALTER TABLE `books` DISABLE KEYS */;
+INSERT INTO `books` VALUES (1,1,'Harry Potter and the Philosopher\'s Stone','1997-06-26'),(2,2,'A Game of Thrones','1996-08-06'),(3,3,'The Shining','1977-01-28'),(4,3,'스탠드','1978-01-01'),(5,4,'Lucky Day','2023-03-01');
+/*!40000 ALTER TABLE `books` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Table structure for table `jobs`
+-- Table structure for table `customers`
 --
 
-DROP TABLE IF EXISTS `jobs`;
+DROP TABLE IF EXISTS `customers`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `jobs` (
-  `job_id` int NOT NULL AUTO_INCREMENT,
-  `job_title` varchar(20) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `min_salary` decimal(8,2) DEFAULT NULL,
-  `max_salary` decimal(9,2) DEFAULT NULL,
-  PRIMARY KEY (`job_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+CREATE TABLE `customers` (
+  `id` varchar(50) NOT NULL,
+  `name` varchar(50) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `address` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `jobs`
+-- Dumping data for table `customers`
 --
 
-LOCK TABLES `jobs` WRITE;
-/*!40000 ALTER TABLE `jobs` DISABLE KEYS */;
-INSERT INTO `jobs` VALUES (1,'Manager',80000.00,120000.00),(2,'Developer',60000.00,100000.00),(3,'Designer',50000.00,90000.00),(4,'Salesperson',40000.00,80000.00),(5,'Accountant',50000.00,100000.00);
-/*!40000 ALTER TABLE `jobs` ENABLE KEYS */;
+LOCK TABLES `customers` WRITE;
+/*!40000 ALTER TABLE `customers` DISABLE KEYS */;
+INSERT INTO `customers` VALUES ('alice789','Alice Johnson','alice.johnson@hotmail.com','789 Elm St, Nowhere'),('jane456','Jane Doe','jane.doe@yahoo.com','456 Oak Ave, Somewhere'),('john123','John Park','john.smith@gmail.com','123 Main St, Anytown, USA');
+/*!40000 ALTER TABLE `customers` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `order_detail`
+--
+
+DROP TABLE IF EXISTS `order_detail`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `order_detail` (
+  `order_id` int DEFAULT NULL,
+  `item` varchar(50) NOT NULL,
+  `quantity` int NOT NULL,
+  KEY `order_detail_ibfk_1` (`order_id`),
+  CONSTRAINT `order_detail_ibfk_1` FOREIGN KEY (`order_id`) REFERENCES `orders` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `order_detail`
+--
+
+LOCK TABLES `order_detail` WRITE;
+/*!40000 ALTER TABLE `order_detail` DISABLE KEYS */;
+INSERT INTO `order_detail` VALUES (1,'pen',10),(1,'toy',2),(2,'clothes',5),(3,'socks',100);
+/*!40000 ALTER TABLE `order_detail` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `orders`
+--
+
+DROP TABLE IF EXISTS `orders`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `orders` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `customer_id` varchar(50) DEFAULT NULL,
+  `date` date NOT NULL,
+  `total` int DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `orders_ibfk_1` (`customer_id`),
+  CONSTRAINT `orders_ibfk_1` FOREIGN KEY (`customer_id`) REFERENCES `customers` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `orders`
+--
+
+LOCK TABLES `orders` WRITE;
+/*!40000 ALTER TABLE `orders` DISABLE KEYS */;
+INSERT INTO `orders` VALUES (1,'john123','2022-01-01',10000),(2,'john123','2022-02-01',15000),(3,'jane456','2022-03-01',20000);
+/*!40000 ALTER TABLE `orders` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -116,7 +158,9 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-10-05 16:32:58
+-- Dump completed on 2023-10-06 17:02:42
+CREATE DATABASE  IF NOT EXISTS `smartfactory` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
+USE `smartfactory`;
 -- MySQL dump 10.13  Distrib 8.0.34, for macos13 (arm64)
 --
 -- Host: localhost    Database: smartfactory
@@ -368,7 +412,9 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-10-05 16:32:58
+-- Dump completed on 2023-10-06 17:02:42
+CREATE DATABASE  IF NOT EXISTS `sys` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
+USE `sys`;
 -- MySQL dump 10.13  Distrib 8.0.34, for macos13 (arm64)
 --
 -- Host: localhost    Database: sys
@@ -4336,10 +4382,12 @@ SET character_set_client = @saved_cs_client;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-10-05 16:32:59
+-- Dump completed on 2023-10-06 17:02:42
+CREATE DATABASE  IF NOT EXISTS `final` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
+USE `final`;
 -- MySQL dump 10.13  Distrib 8.0.34, for macos13 (arm64)
 --
--- Host: localhost    Database: codingon
+-- Host: localhost    Database: final
 -- ------------------------------------------------------
 -- Server version	8.1.0
 
@@ -4355,135 +4403,95 @@ SET character_set_client = @saved_cs_client;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `authors`
+-- Table structure for table `departments`
 --
 
-DROP TABLE IF EXISTS `authors`;
+DROP TABLE IF EXISTS `departments`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `authors` (
-  `author_id` int NOT NULL AUTO_INCREMENT,
-  `first_name` varchar(50) NOT NULL,
-  `last_name` varchar(50) NOT NULL,
-  `email` varchar(50) DEFAULT NULL,
-  PRIMARY KEY (`author_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+CREATE TABLE `departments` (
+  `department_id` int NOT NULL AUTO_INCREMENT,
+  `department_name` varchar(20) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `manager_id` int DEFAULT NULL,
+  `location_id` varchar(20) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  PRIMARY KEY (`department_id`),
+  UNIQUE KEY `manager_id` (`manager_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `authors`
+-- Dumping data for table `departments`
 --
 
-LOCK TABLES `authors` WRITE;
-/*!40000 ALTER TABLE `authors` DISABLE KEYS */;
-INSERT INTO `authors` VALUES (1,'J.K.','Rowling','jkrowling@gmail.com'),(2,'George R.R.','Martin','grmartin@yahoo.com'),(3,'Stephen','King','sking@hotmail.com'),(5,'아가사','크리스티','agatha.christie@example.com');
-/*!40000 ALTER TABLE `authors` ENABLE KEYS */;
+LOCK TABLES `departments` WRITE;
+/*!40000 ALTER TABLE `departments` DISABLE KEYS */;
+INSERT INTO `departments` VALUES (1,'Engineering',3,'New York'),(2,'Sales',5,'Los Angeles'),(3,'Marketing',7,'Chicago'),(4,'Accounting',8,'Houston'),(5,'IT',10,'San Francisco');
+/*!40000 ALTER TABLE `departments` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Table structure for table `books`
+-- Table structure for table `employees`
 --
 
-DROP TABLE IF EXISTS `books`;
+DROP TABLE IF EXISTS `employees`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `books` (
-  `book_id` int NOT NULL AUTO_INCREMENT,
-  `author_id` int NOT NULL,
-  `title` varchar(100) NOT NULL,
-  `publication_date` date NOT NULL,
-  PRIMARY KEY (`book_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+CREATE TABLE `employees` (
+  `employee_id` int NOT NULL AUTO_INCREMENT,
+  `first_name` varchar(20) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `last_name` varchar(20) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `email` varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `phone_number` varchar(20) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `hire_date` date DEFAULT NULL,
+  `job_id` int DEFAULT NULL,
+  `salary` decimal(9,2) DEFAULT NULL,
+  `commission_pct` decimal(3,2) DEFAULT NULL,
+  `manager_id` int DEFAULT NULL,
+  `department_id` int DEFAULT NULL,
+  PRIMARY KEY (`employee_id`),
+  KEY `job_id` (`job_id`),
+  KEY `manager_id` (`manager_id`),
+  KEY `department_id` (`department_id`),
+  CONSTRAINT `employees_ibfk_1` FOREIGN KEY (`job_id`) REFERENCES `jobs` (`job_id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `employees_ibfk_2` FOREIGN KEY (`manager_id`) REFERENCES `departments` (`manager_id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `employees_ibfk_3` FOREIGN KEY (`department_id`) REFERENCES `departments` (`department_id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `books`
+-- Dumping data for table `employees`
 --
 
-LOCK TABLES `books` WRITE;
-/*!40000 ALTER TABLE `books` DISABLE KEYS */;
-INSERT INTO `books` VALUES (1,1,'Harry Potter and the Philosopher\'s Stone','1997-06-26'),(2,2,'A Game of Thrones','1996-08-06'),(3,3,'The Shining','1977-01-28'),(4,3,'스탠드','1978-01-01'),(5,4,'Lucky Day','2023-03-01');
-/*!40000 ALTER TABLE `books` ENABLE KEYS */;
+LOCK TABLES `employees` WRITE;
+/*!40000 ALTER TABLE `employees` DISABLE KEYS */;
+INSERT INTO `employees` VALUES (1,'John','Doe','johndoe@example.com','555-1234','2021-01-01',1,100000.00,0.05,3,1),(2,'Jane','Smith','janesmith@example.com','555-5678','2021-02-01',2,80000.00,NULL,3,1),(3,'Bob','Johnson','bobjohnson@example.com','555-9012','2021-03-01',1,90000.00,0.02,5,2),(4,'Alice','Williams','alicewilliams@example.com','555-3456','2021-04-01',3,70000.00,NULL,5,2),(5,'Mike','Brown','mikebrown@example.com','555-7890','2021-05-01',4,120000.00,0.08,NULL,3),(6,'Sara','Lee','saralee@example.com','555-2345','2021-06-01',4,75000.00,NULL,7,4),(7,'Tom','Jackson','tomjackson@example.com','555-6789','2021-07-01',5,110000.00,0.03,NULL,4),(8,'Karen','Davis','karendavis@example.com','555-1234','2021-08-01',5,95000.00,NULL,7,4),(9,'David','Miller','davidmiller@example.com','555-5678','2021-09-01',2,85000.00,NULL,10,5),(10,'Lisa','Wilson','lisawilson@example.com','555-9012','2021-10-01',1,110000.00,0.06,NULL,5);
+/*!40000 ALTER TABLE `employees` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Table structure for table `customers`
+-- Table structure for table `jobs`
 --
 
-DROP TABLE IF EXISTS `customers`;
+DROP TABLE IF EXISTS `jobs`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `customers` (
-  `id` varchar(50) NOT NULL,
-  `name` varchar(50) NOT NULL,
-  `email` varchar(255) NOT NULL,
-  `address` varchar(255) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+CREATE TABLE `jobs` (
+  `job_id` int NOT NULL AUTO_INCREMENT,
+  `job_title` varchar(20) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `min_salary` decimal(8,2) DEFAULT NULL,
+  `max_salary` decimal(9,2) DEFAULT NULL,
+  PRIMARY KEY (`job_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `customers`
+-- Dumping data for table `jobs`
 --
 
-LOCK TABLES `customers` WRITE;
-/*!40000 ALTER TABLE `customers` DISABLE KEYS */;
-INSERT INTO `customers` VALUES ('alice789','Alice Johnson','alice.johnson@hotmail.com','789 Elm St, Nowhere'),('jane456','Jane Doe','jane.doe@yahoo.com','456 Oak Ave, Somewhere'),('john123','John Park','john.smith@gmail.com','123 Main St, Anytown, USA');
-/*!40000 ALTER TABLE `customers` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `order_detail`
---
-
-DROP TABLE IF EXISTS `order_detail`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `order_detail` (
-  `order_id` int DEFAULT NULL,
-  `item` varchar(50) NOT NULL,
-  `quantity` int NOT NULL,
-  KEY `order_detail_ibfk_1` (`order_id`),
-  CONSTRAINT `order_detail_ibfk_1` FOREIGN KEY (`order_id`) REFERENCES `orders` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `order_detail`
---
-
-LOCK TABLES `order_detail` WRITE;
-/*!40000 ALTER TABLE `order_detail` DISABLE KEYS */;
-INSERT INTO `order_detail` VALUES (1,'pen',10),(1,'toy',2),(2,'clothes',5),(3,'socks',100);
-/*!40000 ALTER TABLE `order_detail` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `orders`
---
-
-DROP TABLE IF EXISTS `orders`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `orders` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `customer_id` varchar(50) DEFAULT NULL,
-  `date` date NOT NULL,
-  `total` int DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `orders_ibfk_1` (`customer_id`),
-  CONSTRAINT `orders_ibfk_1` FOREIGN KEY (`customer_id`) REFERENCES `customers` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `orders`
---
-
-LOCK TABLES `orders` WRITE;
-/*!40000 ALTER TABLE `orders` DISABLE KEYS */;
-INSERT INTO `orders` VALUES (1,'john123','2022-01-01',10000),(2,'john123','2022-02-01',15000),(3,'jane456','2022-03-01',20000);
-/*!40000 ALTER TABLE `orders` ENABLE KEYS */;
+LOCK TABLES `jobs` WRITE;
+/*!40000 ALTER TABLE `jobs` DISABLE KEYS */;
+INSERT INTO `jobs` VALUES (1,'Manager',80000.00,120000.00),(2,'Developer',60000.00,100000.00),(3,'Designer',50000.00,90000.00),(4,'Salesperson',40000.00,80000.00),(5,'Accountant',50000.00,100000.00);
+/*!40000 ALTER TABLE `jobs` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -4495,4 +4503,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-10-05 16:32:59
+-- Dump completed on 2023-10-06 17:02:42
