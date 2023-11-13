@@ -20,11 +20,11 @@ int main()
             pitcherCheck[randomNumber] = 1;
         }
     }
-    // for (int p : pitcher) // pitcher 테스트용
-    // {
-    //     cout << p << " ";
-    // }
-    // cout << endl;
+    for (int p : pitcher) // pitcher 테스트용
+    {
+        cout << p << " ";
+    }
+    cout << endl;
     while (end == 0)
     {
         cout << "1 ~ 9 사이의 숫자 3개를 입력하시오.(이외의 숫자: 종료) : " << endl;

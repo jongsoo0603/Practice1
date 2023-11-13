@@ -1,6 +1,1 @@
-a = int(input("(1) 입력 : "))
-b = int(input("(2) 입력 : "))
-print("\n(3) :",a * b[2])
-print("(4) :",a * b[1])
-print("(5) :",a * b[0])
-print("(6) :",a * b)
+jongsoo/Desktop/codingOn/Python/prac
