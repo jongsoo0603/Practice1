@@ -27,14 +27,12 @@ print(c[2])
 temp_index = ["a", "b", "c", "d"]
 d = pd.Series([1, 2, 3, 4], index = temp_index)
 e = pd.Series([5, 6, 7, 8], index = temp_index)
-
 f = pd.DataFrame(
     {
         "점심" : d,
         "저녁" : e
     }
 )
-
 print(f)
 
 
@@ -44,6 +42,5 @@ bab_data = {
     "종수" : [10, 20, 30],
     "지원" : [50, 60, 70]
 }
-
 bab = pd.DataFrame(bab_data, columns=["종수", "지원"], index= bab_index)
 print(bab)
