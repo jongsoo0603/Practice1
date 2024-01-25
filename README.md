@@ -1,4 +1,4 @@
-# 안녕하세요, 신종수 입니다 👋🏻
+# [안녕하세요, 신종수 입니다 👋🏻](https://private-march-8e2.notion.site/7cc6a040bcae40a98e3bf08feb069d27?pvs=4)
 
 차근 차근 쌓아 나아가는 개발자 입니다.
 
@@ -28,12 +28,11 @@
 
 ## 🌎 Web
 
-- GitHub
-  [jongsoo0603 - Overview](https://github.com/jongsoo0603)
-- YouTube
-  [신종수](https://www.youtube.com/@user-hk7sk9iy1m/videos)
+- [Notion](https://private-march-8e2.notion.site/7cc6a040bcae40a98e3bf08feb069d27?pvs=4)
+- [GitHub](https://github.com/jongsoo0603/codingOn)
+- [YouTube](https://www.youtube.com/@user-hk7sk9iy1m/videos)
 - E - Mail
-       **gi62809@naver.com**
+  **gi62809@naver.com**
 
 ## 🏆 Prize
 
@@ -55,19 +54,19 @@
 
 ## 🐍 Python
 
-[졸음방지 시스템](https://www.notion.so/f5dbc7d98b9e45d993ab27578dd163ef?pvs=4)
+[졸음방지 시스템](https://www.notion.so/f5dbc7d98b9e45d993ab27578dd163ef?pvs=4) - [GitHub](https://github.com/jongsoo0603/codingOn/tree/main/ML/project)
 
-[따릉이 데이터 분석](https://www.notion.so/ab1640ff68224634b7dba0b88dac7498?pvs=4)
+[따릉이 데이터 분석](https://www.notion.so/ab1640ff68224634b7dba0b88dac7498?pvs=4) - [GitHub](https://github.com/jongsoo0603/codingOn/tree/main/Python/project)
 
 ## 🖥️ C++
 
-[채팅 프로그램](https://www.notion.so/a1dd680e432a4c99a225df8665d49f16?pvs=4)
+[채팅 프로그램](https://www.notion.so/a1dd680e432a4c99a225df8665d49f16?pvs=4) - [GitHub](https://github.com/jongsoo0603/chattingProject/tree/main)
 
-[오목 게임](https://www.notion.so/989246ad32cb44089dd08078abd473cd?pvs=4)
+[오목 게임](https://www.notion.so/989246ad32cb44089dd08078abd473cd?pvs=4) - [GitHub](https://github.com/jongsoo0603/codingOn/tree/main/c%2B%2B/project/p8_omockGame)
 
-[간단한 게임들](https://www.notion.so/9a119c046fe34fd8b2d8591548473f1c?pvs=4)
+[간단한 게임들](https://www.notion.so/9a119c046fe34fd8b2d8591548473f1c?pvs=4) - [GitHub](https://github.com/jongsoo0603/codingOn/tree/main/c%2B%2B/project)
 
-## 🏭 PLC / HMI
+## 🏭 PLC / HMI - [GitHub](https://github.com/jongsoo0603/codingOn/tree/main/PLC)
 
 - XG-5000 / XP-Bulider
 
@@ -76,5 +75,7 @@
   [보행자 기준 신호등](https://www.notion.so/8ec43837969441c19371690e7432eba9?pvs=4)
 
 - InTouch
+
   [차량 기준 신호등 ](https://www.notion.so/b3db164b90284db696b659e0fabe2de4?pvs=4)
+
   [연속 도색 시스템](https://www.notion.so/f5c4cea4ff7e47759dcb0cc4d525c49b?pvs=4)
