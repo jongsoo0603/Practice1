@@ -9,8 +9,13 @@
 
 ![1](https://github.com/jongsoo0603/codingOn/assets/98942866/4a928700-dc1b-435d-9577-082219e4eeec)
 
-- 주요 기능 - 졸음 인식 경고 - [얼굴 인식 안됨(꾸벅임](https://www.notion.so/f5dbc7d98b9e45d993ab27578dd163ef?pvs=21)) - [눈 1초 이상 감음](https://www.notion.so/f5dbc7d98b9e45d993ab27578dd163ef?pvs=21) - [하품 연달아 2번(10초 안에)](https://www.notion.so/f5dbc7d98b9e45d993ab27578dd163ef?pvs=21) - 집까지의 경로 - [특정 손동작 인식 시 현재 위치에서 집까지의 최적 경로와 예상 시간 출력](https://www.notion.so/f5dbc7d98b9e45d993ab27578dd163ef?pvs=21)
-</aside>
+- 주요 기능
+  - 졸음 인식 경고
+    - [얼굴 인식 안됨(꾸벅임](https://www.notion.so/f5dbc7d98b9e45d993ab27578dd163ef?pvs=21)
+    - [눈 1초 이상 감음](https://www.notion.so/f5dbc7d98b9e45d993ab27578dd163ef?pvs=21)
+    - [하품 연달아 2번(10초 안에)](https://www.notion.so/f5dbc7d98b9e45d993ab27578dd163ef?pvs=21)
+  - 집까지의 경로 - [특정 손동작 인식 시 현재 위치에서 집까지의 최적 경로와 예상 시간 출력](https://www.notion.so/f5dbc7d98b9e45d993ab27578dd163ef?pvs=21)
+  </aside>
 
 ### 사용 기술 및 라이브러리
 

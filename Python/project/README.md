@@ -5,7 +5,7 @@
 # 👆🏻프로젝트 개요
 
 <aside>
-✅ 빅데이터를 분석하여 ‘왜’ 그런 데이터가 나왔는지 인과관계를 추측
+✅ 빅데이터를 비교 분석하여 ‘왜’ 그런 데이터가 나왔는지 인과관계를 추측
 
 - 주요 분석 사항
 
@@ -14,8 +14,18 @@
   - [이용률 ←→ 대여소 수](https://github.com/jongsoo0603/codingOn/assets/98942866/54ec8860-d88b-4df3-8a14-5ac231058540)
   - [운동량 ←→ 연령대](https://github.com/jongsoo0603/codingOn/assets/98942866/2d9f876c-5d59-44ec-9e13-9c4c57bb5fd3)
 
-- 데이터 - 따릉이 대여 데이터 - [서울열린데이터광장- 서울시공공자전거이용정보(일별)](http://data.seoul.go.kr/dataList/OA-13252/F/1/datasetView.do) - 2023년1월1일~6월30일 - 따릉이 대여소 데이터 - [서울열린데이터광장- 서울시공공자전거대여소정보](http://data.seoul.go.kr/dataList/OA-15246/F/1/datasetView.do) - 2023년06월 - 날씨 데이터 - [공공데이터포털- 기상청\_지상(종관, ASOS)일자료조회서비스](https://www.data.go.kr/data/15059093/openapi.do) - 2023년1월1일~ 6월30일 - 체력 측정 데이터 - [국가통계포털- 지역별,연령별체력,체격측정결과:서울(남자)](https://kosis.kr/statHtml/statHtml.do?orgId=113&tblId=DT_113_STBL_1025785&conn_path=I2), ["(여자](https://kosis.kr/statHtml/statHtml.do?orgId=113&tblId=DT_113_STBL_1025783&conn_path=I2) - 2017년
-</aside>
+- 데이터
+  - 따릉이 대여 데이터
+    - [서울열린데이터광장- 서울시공공자전거이용정보(일별)](http://data.seoul.go.kr/dataList/OA-13252/F/1/datasetView.do)
+    - 2023년1월1일~6월30일
+  - 따릉이 대여소 데이터
+    - [서울열린데이터광장- 서울시공공자전거대여소정보](http://data.seoul.go.kr/dataList/OA-15246/F/1/datasetView.do)
+    - 2023년06월
+  - 날씨 데이터
+    - [공공데이터포털- 기상청\_지상(종관, ASOS)일자료조회서비스](https://www.data.go.kr/data/15059093/openapi.do)
+    - 2023년1월1일~ 6월30일
+  - 체력 측정 데이터 - [국가통계포털- 지역별,연령별체력,체격측정결과:서울(남자)](https://kosis.kr/statHtml/statHtml.do?orgId=113&tblId=DT_113_STBL_1025785&conn_path=I2), ["(여자](https://kosis.kr/statHtml/statHtml.do?orgId=113&tblId=DT_113_STBL_1025783&conn_path=I2) - 2017년
+  </aside>
 
 ### 사용 기술 및 라이브러리
 

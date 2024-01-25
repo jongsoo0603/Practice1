@@ -29,7 +29,6 @@
 ## 🌎 Web
 
 - [Notion](https://private-march-8e2.notion.site/7cc6a040bcae40a98e3bf08feb069d27?pvs=4)
-- [GitHub](https://github.com/jongsoo0603/codingOn)
 - [YouTube](https://www.youtube.com/@user-hk7sk9iy1m/videos)
 - E - Mail
   **gi62809@naver.com**
