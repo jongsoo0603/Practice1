@@ -1,0 +1,29 @@
+{
+  "GraphicVersion": 1,
+  "VisualElementID": 845,
+  "GObjectId": 845,
+  "HelpId": "",
+  "VisualElementName": "SQLDataGridUserCtrl",
+  "IsProtected": false,
+  "ContextObject": "",
+  "TimeStamp": 133437045432639303,
+  "VisualElementType": "ClientControl",
+  "Errors": null,
+  "Warnings": null,
+  "AttributeReferences": null,
+  "RuntimeDependencies": null,
+  "ClientControlDependencies": [
+    "Invensys_Systems__Inc__SQLDataGridUserCtrl.dll\\aaDCM.dll",
+    "Invensys_Systems__Inc__SQLDataGridUserCtrl.dll\\Infragistics2.Shared.v7.1.dll",
+    "Invensys_Systems__Inc__SQLDataGridUserCtrl.dll\\Infragistics2.Win.Misc.v7.1.dll",
+    "Invensys_Systems__Inc__SQLDataGridUserCtrl.dll\\Infragistics2.Win.UltraWinGrid.v7.1.dll",
+    "Invensys_Systems__Inc__SQLDataGridUserCtrl.dll\\Infragistics2.Win.v7.1.dll",
+    "Invensys_Systems__Inc__SQLDataGridUserCtrl.dll\\SQLDataGridUserCtrl.dll"
+  ],
+  "Description": "",
+  "VisualElementReferencesStatus": [],
+  "GraphicChangeType": 1,
+  "ContentType": "",
+  "InternalName": null,
+  "ExternalName": null
+}

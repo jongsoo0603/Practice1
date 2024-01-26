@@ -1,0 +1,22 @@
+{
+  "GraphicVersion": 6,
+  "VisualElementID": 857,
+  "GObjectId": 857,
+  "HelpId": "",
+  "VisualElementName": "ButtonGlossyDotMomentaryRed",
+  "IsProtected": false,
+  "ContextObject": "",
+  "TimeStamp": 133438111240753271,
+  "VisualElementType": "Symbol",
+  "Errors": null,
+  "Warnings": null,
+  "AttributeReferences": null,
+  "RuntimeDependencies": null,
+  "ClientControlDependencies": null,
+  "Description": "",
+  "VisualElementReferencesStatus": [],
+  "GraphicChangeType": 1,
+  "ContentType": "",
+  "InternalName": null,
+  "ExternalName": null
+}

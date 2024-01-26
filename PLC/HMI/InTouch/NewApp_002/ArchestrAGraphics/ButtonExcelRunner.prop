@@ -1,0 +1,22 @@
+{
+  "GraphicVersion": 21,
+  "VisualElementID": 843,
+  "GObjectId": 843,
+  "HelpId": "",
+  "VisualElementName": "ButtonExcelRunner",
+  "IsProtected": false,
+  "ContextObject": "",
+  "TimeStamp": 133438111221653284,
+  "VisualElementType": "Symbol",
+  "Errors": null,
+  "Warnings": null,
+  "AttributeReferences": null,
+  "RuntimeDependencies": null,
+  "ClientControlDependencies": null,
+  "Description": "",
+  "VisualElementReferencesStatus": [],
+  "GraphicChangeType": 1,
+  "ContentType": "",
+  "InternalName": null,
+  "ExternalName": null
+}

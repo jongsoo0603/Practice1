@@ -1,0 +1,22 @@
+{
+  "GraphicVersion": 40,
+  "VisualElementID": 824,
+  "GObjectId": 824,
+  "HelpId": "",
+  "VisualElementName": "BoilerWithHorizontalFlames",
+  "IsProtected": false,
+  "ContextObject": "",
+  "TimeStamp": 133438111190727391,
+  "VisualElementType": "Symbol",
+  "Errors": null,
+  "Warnings": null,
+  "AttributeReferences": null,
+  "RuntimeDependencies": null,
+  "ClientControlDependencies": null,
+  "Description": "",
+  "VisualElementReferencesStatus": [],
+  "GraphicChangeType": 1,
+  "ContentType": "",
+  "InternalName": null,
+  "ExternalName": null
+}

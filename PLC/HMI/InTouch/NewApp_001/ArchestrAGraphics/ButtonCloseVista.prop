@@ -1,0 +1,22 @@
+{
+  "GraphicVersion": 13,
+  "VisualElementID": 843,
+  "GObjectId": 843,
+  "HelpId": "",
+  "VisualElementName": "ButtonCloseVista",
+  "IsProtected": false,
+  "ContextObject": "",
+  "TimeStamp": 133437045431490697,
+  "VisualElementType": "Symbol",
+  "Errors": null,
+  "Warnings": null,
+  "AttributeReferences": null,
+  "RuntimeDependencies": null,
+  "ClientControlDependencies": null,
+  "Description": "",
+  "VisualElementReferencesStatus": [],
+  "GraphicChangeType": 1,
+  "ContentType": "",
+  "InternalName": null,
+  "ExternalName": null
+}

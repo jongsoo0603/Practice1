@@ -1,0 +1,22 @@
+{
+  "GraphicVersion": 8,
+  "VisualElementID": 850,
+  "GObjectId": 850,
+  "HelpId": "",
+  "VisualElementName": "ButtonGelYellow",
+  "IsProtected": false,
+  "ContextObject": "",
+  "TimeStamp": 133438111232003278,
+  "VisualElementType": "Symbol",
+  "Errors": null,
+  "Warnings": null,
+  "AttributeReferences": null,
+  "RuntimeDependencies": null,
+  "ClientControlDependencies": null,
+  "Description": "",
+  "VisualElementReferencesStatus": [],
+  "GraphicChangeType": 1,
+  "ContentType": "",
+  "InternalName": null,
+  "ExternalName": null
+}
